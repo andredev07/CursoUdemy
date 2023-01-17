@@ -27,6 +27,7 @@ namespace Section6
         {
             var increase = (percentage / 100) + 1;
             var result = Salary * increase;
+            Salary = result;
         }
     }
 }
