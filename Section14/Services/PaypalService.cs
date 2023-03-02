@@ -11,13 +11,15 @@ namespace Section14.Services
     {
         public double PaymentFee(double amount)
         {
-            var result = amount * 0.2;
+            var percentage = (2 * amount) / 100;
+            var result = amount + percentage;
             return result;
         }
 
         public double Interest(double amount, int months)
         {
-            var result = amount + 0.1 * months;
+            var percentage = (1 * amount) / 100;
+            var result = amount + percentage * months ;
             return result;
         }
     }

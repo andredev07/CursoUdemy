@@ -25,17 +25,15 @@ namespace Section14.Services
 
             for (int i = 1; i <= months; i++) 
             {
-                sum = _onlinePaymentService.Interest(valueInstallment, months);
-                sum += _onlinePaymentService.PaymentFee(sum);
+                sum = _onlinePaymentService.PaymentFee(_onlinePaymentService.Interest(valueInstallment, i));
 
                 dateInstallment = contract.Date.AddMonths(i);
-
                 contract.Installments.Add(new Installment(dateInstallment, sum));
+            }
 
-                foreach(Installment obj in contract.Installments)
-                {
-                    Console.WriteLine(obj.DueDate + " - " + obj.Amount.ToString("C"), CultureInfo.InvariantCulture );
-                }
+            foreach (Installment obj in contract.Installments)
+            {
+                Console.WriteLine(obj.DueDate + " - " + obj.Amount.ToString("C"), CultureInfo.InvariantCulture);
             }
         }
     }
